@@ -23,6 +23,10 @@ const searchBooks = (bookName) => {
 const displayBooks = (data) => {
     showLoading(false);
 
+    // clearing book display grid
+    const bookDisplay = document.getElementById("book-display");
+    bookDisplay.innerHTML = "";
+
     // search result summary
     if (data.numFound === 0) {
         showMessage("No book found. Try with a different keyword.");
@@ -35,10 +39,7 @@ const displayBooks = (data) => {
         showMessage(data.numFound + " books found");
     }
 
-    // book display grid
-    const bookDisplay = document.getElementById("book-display");
-    bookDisplay.innerHTML = "";
-
+    // loading data into book display grid
     const books = data.docs;
 
     books.forEach(book => {
